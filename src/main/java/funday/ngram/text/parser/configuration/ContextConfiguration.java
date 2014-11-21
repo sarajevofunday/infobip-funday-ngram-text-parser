@@ -2,7 +2,9 @@ package funday.ngram.text.parser.configuration;
 
 import com.mongodb.Mongo;
 import funday.ngram.text.parser.data.service.NgramManagerDataService;
+import funday.ngram.text.parser.data.service.FilesUtil;
 import funday.ngram.text.parser.data.service.internal.NgramManagerDataServiceImpl;
+import funday.ngram.text.parser.data.service.internal.FilesUtilImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.MongoDbFactory;
@@ -58,5 +60,10 @@ public class ContextConfiguration {
 	@Bean
 	public NgramManagerDataService ngramManagerDataService() {
 		return new NgramManagerDataServiceImpl(mongoTemplate());
+	}
+
+	@Bean
+	public FilesUtil textLoader() {
+		return new FilesUtilImpl();
 	}
 }
